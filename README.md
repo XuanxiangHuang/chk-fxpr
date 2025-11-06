@@ -1,7 +1,5 @@
 # chk-fxpr
 
-**Uncovering Bugs in Formal Explainers (code)**
-
 This repository contains the code accompanying the paper:
 
 > **Uncovering Bugs in Formal Explainers: A Case Study with PyXAI**  
