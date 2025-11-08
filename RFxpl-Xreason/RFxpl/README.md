@@ -12,3 +12,5 @@ To reproduce the corresponding experimental results, run `python3 check_cxp.py` 
 
 The archive `pyxai_results.tar.gz` contains the PyXAI log files required by RFxpl.  
 RFxpl processes each log file to extract the instances and explanations, and then executes its checking algorithm to validate PyXAI’s explanations (both AXps and CXPs).
+
+The archive `results.tar.gz` contains the experimental results reported in the paper.
