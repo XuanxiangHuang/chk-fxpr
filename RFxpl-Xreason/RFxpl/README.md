@@ -1,6 +1,6 @@
 # RFxpl
 
-SAT-based Random Forests eXplainer as the Checker
+Random Forests eXplainer as the Checker
 
 ### Usage
 
@@ -14,3 +14,7 @@ The archive `pyxai_results.tar.gz` contains the PyXAI log files required by RFxp
 RFxpl processes each log file to extract the instances and explanations, and then executes its checking algorithm to validate PyXAI’s explanations (both AXps and CXPs).
 
 The archive `results.tar.gz` contains the experimental results reported in the paper.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
