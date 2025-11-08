@@ -8,28 +8,14 @@ from xgbooster import XGBooster
 import numpy as np
 
 if __name__ == '__main__':
-    data_list = "datasets_small.list"
+    
+    DATASETS = {
+        "phoneme": {"depth": 3, "num": 2},
+    }
 
-    verbose = False
-
-    datasets = []
-    depths = []
-    nums = []
-
-    # Read the file
-    with open(data_list, "r") as file:
-        for line in file:
-            parts = line.strip().split()  # Split by spaces
-            dataset_path = parts[0]  # First part is the dataset path
-            depth = int(parts[1])  # Second part is the depth (converted to int)
-            num = int(parts[2])  # Third part is the number of estimators (converted to int)
-
-            datasets.append(dataset_path)
-            depths.append(depth)
-            nums.append(num)
-
-    for data, depth, num in zip(datasets, depths, nums):
-        base = os.path.splitext(os.path.basename(data))[0]
+    for base, cfg in DATASETS.items():
+        depth = cfg["depth"]
+        num   = cfg["num"]
         pickle_path = f'toy_bts/{base}/{base}_nbestim_{num}_maxdepth_{depth}_testsplit_0.2.mod.pkl'
 
         opts = Options(None)

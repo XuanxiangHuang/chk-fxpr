@@ -8,26 +8,41 @@ import sys
 from xgbooster import XGBooster
 
 if __name__ == '__main__':
-    data_list = "datasets.list"
 
-    num = 50
-    verbose = False
+    DATASETS = {
+        "4_breastw":          {"depth": 3, "num": 50},
+        "6_cardio":           {"depth": 3, "num": 50},
+        "7_Cardiotocography": {"depth": 3, "num": 50},
+        "12_fault":           {"depth": 4, "num": 50},
+        "21_Lymphography":    {"depth": 3, "num": 50},
+        "29_Pima":            {"depth": 3, "num": 50},
+        "30_satellite":       {"depth": 3, "num": 50},
+        "31_satimage-2":      {"depth": 3, "num": 50},
+        "33_skin":            {"depth": 3, "num": 50},
+        "37_Stamps":          {"depth": 3, "num": 50},
+        "appendicitis":       {"depth": 3, "num": 50},
+        "banknote":           {"depth": 3, "num": 50},
+        "biodegradation":     {"depth": 3, "num": 50},
+        "glass2":             {"depth": 4, "num": 50},
+        "heart-c":            {"depth": 5, "num": 50},
+        "ionosphere":         {"depth": 3, "num": 50},
+        "magic":              {"depth": 3, "num": 50},
+        "mofn-3-7-10":        {"depth": 3, "num": 50},
+        "phoneme":            {"depth": 4, "num": 50},
+        "ring":               {"depth": 3, "num": 50},
+        "sonar":              {"depth": 3, "num": 50},
+        "spambase":           {"depth": 4, "num": 50},
+        "spectf":             {"depth": 3, "num": 50},
+        "twonorm":            {"depth": 3, "num": 50},
+        "wdbc":               {"depth": 4, "num": 50},
+        "wpbc":               {"depth": 4, "num": 50},
+        "xd6":                {"depth": 3, "num": 50},
+    }
+    
 
-    datasets = []
-    depths = []
-
-    # Read the file
-    with open(data_list, "r") as file:
-        for line in file:
-            parts = line.strip().split()  # Split by spaces
-            dataset_path = parts[0]  # First part is the dataset path
-            depth = int(parts[1])  # Second part is the depth (converted to int)
-
-            datasets.append(dataset_path)
-            depths.append(depth)
-
-    for data, depth in zip(datasets, depths):
-        base = os.path.splitext(os.path.basename(data))[0]
+    for base, cfg in DATASETS.items():
+        depth = cfg["depth"]
+        num   = cfg["num"]
         pickle_path = f'../models/{base}/{base}_nbestim_{num}_maxdepth_{depth}_testsplit_0.2.mod.pkl'
 
         opts = Options(None)
