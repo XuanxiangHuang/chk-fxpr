@@ -10,29 +10,21 @@ import numpy as np
 import pandas as pd
 
 if __name__ == '__main__':
-    data_list = "datasets_small.list"
-
     verbose = False
 
-    datasets = []
-    depths = []
-    nums = []
+    BASE_DIR = "../bench"
 
-    # Read the file
-    with open(data_list, "r") as file:
-        for line in file:
-            parts = line.strip().split()  # Split by spaces
-            dataset_path = parts[0]  # First part is the dataset path
-            depth = int(parts[1])  # Second part is the depth (converted to int)
-            num = int(parts[2])  # Third part is the number of estimators (converted to int)
+    DATASETS = {
+        "29_Pima": {"depth": 4, "num": 3},
+        "xd6":     {"depth": 4, "num": 4},
+    }
 
-            datasets.append(dataset_path)
-            depths.append(depth)
-            nums.append(num)
-
-    for data, depth, num in zip(datasets, depths, nums):
-        base = os.path.splitext(os.path.basename(data))[0]
-        df = pd.read_csv(f"../bench/{base}/{base}.csv")
+    for base, cfg in DATASETS.items():
+        depth = cfg["depth"]
+        num   = cfg["num"]
+        # Load .csv from ../bench/<base>/<base>.csv
+        csv_path = os.path.join(BASE_DIR, base, f"{base}.csv")
+        df = pd.read_csv(csv_path)
         # Drop the last column (output column)
         df_X = df.iloc[:, :-1]
         # Extract min and max values for each feature

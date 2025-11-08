@@ -10,27 +10,46 @@ import numpy as np
 import pandas as pd
 
 if __name__ == '__main__':
-    data_list = "datasets.list"
-
-    num = 50
     verbose = False
 
-    datasets = []
-    depths = []
-
-    # Read the file
-    with open(data_list, "r") as file:
-        for line in file:
-            parts = line.strip().split()  # Split by spaces
-            dataset_path = parts[0]  # First part is the dataset path
-            depth = int(parts[1])  # Second part is the depth (converted to int)
-
-            datasets.append(dataset_path)
-            depths.append(depth)
-
-    for data, depth in zip(datasets, depths):
-        base = os.path.splitext(os.path.basename(data))[0]
-        df = pd.read_csv(f"../bench/{base}/{base}.csv")
+    BASE_DIR = "../bench"
+    
+    DATASETS = {
+        "4_breastw":            {"depth": 4, "num": 50},
+        "6_cardio":             {"depth": 4, "num": 50},
+        "7_Cardiotocography":   {"depth": 4, "num": 50},
+        "12_fault":             {"depth": 4, "num": 50},
+        "21_Lymphography":      {"depth": 4, "num": 50},
+        "29_Pima":              {"depth": 4, "num": 50},
+        "30_satellite":         {"depth": 4, "num": 50},
+        "31_satimage-2":        {"depth": 4, "num": 50},
+        "33_skin":              {"depth": 4, "num": 50},
+        "37_Stamps":            {"depth": 4, "num": 50},
+        "appendicitis":         {"depth": 4, "num": 50},
+        "banknote":             {"depth": 4, "num": 50},
+        "biodegradation":       {"depth": 4, "num": 50},
+        "glass2":               {"depth": 4, "num": 50},
+        "heart-c":              {"depth": 4, "num": 50},
+        "ionosphere":           {"depth": 4, "num": 50},
+        "magic":                {"depth": 4, "num": 50},
+        "mofn-3-7-10":          {"depth": 4, "num": 50},
+        "phoneme":              {"depth": 4, "num": 50},
+        "ring":                 {"depth": 4, "num": 50},
+        "sonar":                {"depth": 4, "num": 50},
+        "spambase":             {"depth": 4, "num": 50},
+        "spectf":               {"depth": 4, "num": 50},
+        "twonorm":              {"depth": 4, "num": 50},
+        "wdbc":                 {"depth": 4, "num": 50},
+        "wpbc":                 {"depth": 4, "num": 50},
+        "xd6":                  {"depth": 4, "num": 50},
+    }
+    
+    for base, cfg in DATASETS.items():
+        depth = cfg["depth"]
+        num   = cfg["num"]
+        # Load .csv from ../bench/<base>/<base>.csv
+        csv_path = os.path.join(BASE_DIR, base, f"{base}.csv")
+        df = pd.read_csv(csv_path)
         # Drop the last column (output column)
         df_X = df.iloc[:, :-1]
         # Extract min and max values for each feature
