@@ -2,6 +2,10 @@
 
 Random Forests eXplainer as the Checker
 
+### Installation
+
+Run `pip install -r requirements.txt`
+
 ### Usage
 
 The `Classifiers` folder contains the two toy examples referenced in the paper.  

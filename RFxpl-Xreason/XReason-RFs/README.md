@@ -2,6 +2,24 @@
 
 Boosted Trees eXplainer as the Checker for validating RFxpl’s and PyXAI’s results.
 
+### Installation
+
+The following packages are necessary to run XReason:
+
+* [Anchor](https://github.com/marcotcr/anchor) (version [0.0.2.0](https://pypi.org/project/anchor-exp/0.0.2.0/))
+* [anytree](https://anytree.readthedocs.io/)
+* [LIME](https://github.com/marcotcr/lime)
+* [namedlist](https://gitlab.com/ericvsmith/namedlist)
+* [numpy](http://www.numpy.org/)
+* [pandas](https://pandas.pydata.org/)
+* [pySMT](https://github.com/pysmt/pysmt) (with Z3 installed)
+* [PySAT](https://github.com/pysathq/pysat)
+* [scikit-learn](https://scikit-learn.org/stable/)
+* [SHAP](https://github.com/slundberg/shap)
+* [XGBoost](https://github.com/dmlc/xgboost/) (version [1.7.5](https://pypi.org/project/xgboost/1.7.5/))
+
+**Important:** If you are using a MacOS system, please make sure you use `libomp` (OpenMP) version 11. Later versions are affected by [this bug](https://github.com/dmlc/xgboost/issues/7039).
+
 ### Usage
 
 The archive `smt_enc.tar.gz` contains the SMT encodings of the toy Random Forests and the Random Forests with 50 trees used by RFxpl and PyXAI.

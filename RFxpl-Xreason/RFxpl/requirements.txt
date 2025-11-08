@@ -1,0 +1,12 @@
+anytree==2.12.1
+numpy==1.26.4
+pandas==2.2.3
+python-dateutil==2.8.2
+pytz==2025.1
+scikit-learn==1.6.1
+scipy==1.13.1
+threadpoolctl==3.5.0
+joblib==1.4.2
+python-sat==1.8.dev14
+six==1.17.0
+namedlist==1.8
